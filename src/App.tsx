@@ -1,7 +1,7 @@
 import React from 'react'
-import { MainScreen } from '@screens'
 import { DefaultTheme } from '@styles'
 import { AppBar, StatusBar } from '@components'
+import { MainScreen, screens } from '@screens'
 import { NavigationContainer } from '@react-navigation/native'
 import { Provider as PaperProvider } from 'react-native-paper'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
@@ -17,12 +17,13 @@ export default () => {
 
         <NavigationContainer theme={DefaultTheme}>
           <Navigator
+            initialRouteName={screens.MainScreen}
             screenOptions={{
               header: AppBar,
             }}
           >
             <Screen
-              name='MainScreen'
+              name={screens.MainScreen}
               component={MainScreen}
               options={{ title: 'Главная' }}
             />
