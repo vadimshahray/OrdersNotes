@@ -3,14 +3,14 @@ import { MainScreen } from '@screens'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-const Stack = createNativeStackNavigator()
+const { Navigator, Screen } = createNativeStackNavigator()
 
 export default () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen name='MainScreen' component={MainScreen} />
-      </Stack.Navigator>
+      <Navigator>
+        <Screen name='MainScreen' component={MainScreen} />
+      </Navigator>
     </NavigationContainer>
   )
 }
