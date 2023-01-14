@@ -13,7 +13,7 @@ export const ScreenContent = ({
   const insets = useSafeAreaInsets()
 
   const paddingH = noPadding ? 0 : 16
-  const paddingV = noPadding ? 0 : 12
+  const paddingV = noPadding ? 0 : 13
 
   return (
     <View
