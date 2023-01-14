@@ -1,2 +1,2 @@
-export * from './screens'
 export * from './MainScreen'
+export * from './SettingsScreen'
