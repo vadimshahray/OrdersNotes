@@ -4,10 +4,14 @@ import { useNavigation } from '@react-navigation/native'
 import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 export const useMainScreenHeaderRight = () => {
-  const { setOptions } =
+  const { navigate, setOptions } =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>()
 
+  const navigateToSettings = () => [navigate('SettingsScreen')]
+
   useEffect(() => {
-    setOptions({ headerRight: SettingsScreenAction })
-  })
+    setOptions({
+      headerRight: () => <SettingsScreenAction onPress={navigateToSettings} />,
+    })
+  }, [setOptions])
 }

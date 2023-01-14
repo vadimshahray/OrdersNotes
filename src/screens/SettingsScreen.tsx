@@ -1,8 +1,10 @@
+import { useScreenTitle } from '@hooks'
 import { Text } from 'react-native-paper'
 import { ScreenContent } from '@components'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 export const SettingsScreen = () => {
+  useScreenTitle('Настройки приложения')
+
   return (
     <ScreenContent>
       <Text>SettingScreen text</Text>
