@@ -1,10 +1,8 @@
 import { useEffect } from 'react'
-import { useNavigation } from '@react-navigation/native'
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+import { useNavigation } from '@hooks'
 
 export const useScreenTitle = (title: string) => {
-  const { setOptions } =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>()
+  const { setOptions } = useNavigation()
 
   useEffect(() => {
     setOptions({ title })

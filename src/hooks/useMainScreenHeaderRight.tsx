@@ -1,9 +1,9 @@
 import { useEffect } from 'react'
+import { useNavigation } from '@hooks'
 import { SettingsScreenAction } from '@components'
-import { useNavigation } from '@react-navigation/native'
 
 export const useMainScreenHeaderRight = () => {
-  const { navigate, setOptions } = useNavigation<AppNavigation>()
+  const { navigate, setOptions } = useNavigation()
 
   const navigateToSettings = () => [navigate('SettingsScreen')]
 
