@@ -1,11 +1,9 @@
 import { FAB } from 'react-native-paper'
 import { StyleSheet } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 
 export const AddOrderButton = () => {
-  const { navigate } =
-    useNavigation<NativeStackNavigationProp<RootStackParamList>>()
+  const { navigate } = useNavigation<AppNavigation>()
 
   const navigateToOrderDesignScreen = () => {
     navigate('OrderDesignerScreen', { mode: 'create' })
