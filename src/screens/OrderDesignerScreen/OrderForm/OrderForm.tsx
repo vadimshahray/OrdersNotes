@@ -1,7 +1,7 @@
-import { useDispatch } from '@hooks'
 import React from 'react'
 import * as Yup from 'yup'
 import { addOrder } from '@slices'
+import { useDispatch } from '@hooks'
 import { Button } from 'react-native-paper'
 import { StyleSheet, View } from 'react-native'
 import { ValidatedTextInput } from '@components'
@@ -11,7 +11,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 const validationSchema = Yup.object<Record<keyof EditableOrder, Yup.AnySchema>>(
   {
     name: Yup.string().required('Это поле обязательное'),
-    customer: Yup.string(),
+    notes: Yup.string(),
   },
 )
 
@@ -31,7 +31,7 @@ export const OrderForm = ({ mode, onSubmit }: OrderFormProps) => {
     mode: 'onChange',
     defaultValues: {
       name: '',
-      customer: '',
+      notes: '',
     },
     resolver: yupResolver(validationSchema),
   })
@@ -64,7 +64,7 @@ export const OrderForm = ({ mode, onSubmit }: OrderFormProps) => {
         />
 
         <Controller
-          name='customer'
+          name='notes'
           control={control}
           render={({
             field: { value, onChange },
@@ -72,7 +72,7 @@ export const OrderForm = ({ mode, onSubmit }: OrderFormProps) => {
           }) => {
             return (
               <ValidatedTextInput
-                label='Покупатель'
+                label='Примечания'
                 value={value}
                 error={invalid}
                 errorText={error?.message}

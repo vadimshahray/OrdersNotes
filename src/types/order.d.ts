@@ -1,6 +1,6 @@
 type EditableOrder = {
   name: string
-  customer?: string
+  notes?: string
 }
 
 type Order = {
