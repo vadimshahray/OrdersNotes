@@ -1,6 +1,10 @@
 import { useCallback } from 'react'
 import { StyleSheet } from 'react-native'
-import { ListItemWrapper, ListEmptyContent } from '@components'
+import {
+  ListItemWrapper,
+  ListEmptyContent,
+  ListItemWrapperProps,
+} from '@components'
 import {
   FlashList,
   FlashListProps,
@@ -9,11 +13,13 @@ import {
 
 export type ListProps<Item> = {
   onItemPress: (item: Item) => void
+  itemStyle?: ListItemWrapperProps['style']
 } & FlashListProps<Item>
 
 export function List<Item>({
   renderItem,
   onItemPress,
+  itemStyle,
   ...props
 }: ListProps<Item>) {
   const renderWrappedItem = useCallback(
@@ -23,7 +29,7 @@ export function List<Item>({
       }
 
       return (
-        <ListItemWrapper onPress={handlePress}>
+        <ListItemWrapper onPress={handlePress} style={itemStyle}>
           {renderItem?.(itemData)}
         </ListItemWrapper>
       )
