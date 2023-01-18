@@ -1,11 +1,10 @@
+import { List } from '@components'
 import { useCallback } from 'react'
 import { useNavigation } from '@hooks'
 import { OrderItem } from './OrderItem'
-import { StyleSheet } from 'react-native'
 import { useSelector } from 'react-redux'
 import { selectOrders } from '@selectors'
-import { ListEmptyContent, ListItemWrapper } from '@components'
-import { FlashList, ListRenderItemInfo } from '@shopify/flash-list'
+import { ListRenderItemInfo } from '@shopify/flash-list'
 
 export const OrdersList = () => {
   const orders = useSelector(selectOrders)
@@ -17,28 +16,15 @@ export const OrdersList = () => {
   }, [navigate])
 
   const renderItem = useCallback(
-    ({ item }: ListRenderItemInfo<Order>) => (
-      <ListItemWrapper onPress={navigateToOrderDesigner}>
-        <OrderItem order={item} />
-      </ListItemWrapper>
-    ),
+    ({ item }: ListRenderItemInfo<Order>) => <OrderItem order={item} />,
     [navigateToOrderDesigner],
   )
 
-  return orders.length ? (
-    <FlashList
+  return (
+    <List
       data={orders}
       renderItem={renderItem}
-      estimatedItemSize={30}
-      contentContainerStyle={styles.listContentContainer}
+      onItemPress={navigateToOrderDesigner}
     />
-  ) : (
-    <ListEmptyContent />
   )
 }
-
-const styles = StyleSheet.create({
-  listContentContainer: {
-    paddingVertical: 3.5,
-  },
-})
