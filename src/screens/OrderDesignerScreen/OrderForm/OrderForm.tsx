@@ -1,5 +1,7 @@
+import { useDispatch } from '@hooks'
 import React from 'react'
 import * as Yup from 'yup'
+import { addOrder } from '@slices'
 import { Button } from 'react-native-paper'
 import { StyleSheet, View } from 'react-native'
 import { ValidatedTextInput } from '@components'
@@ -13,7 +15,14 @@ const validationSchema = Yup.object<Record<keyof EditableOrder, Yup.AnySchema>>(
   },
 )
 
-export const OrderForm = () => {
+export type OrderFormProps = {
+  mode: 'create' | 'modify'
+  onSubmit: () => void
+}
+
+export const OrderForm = ({ mode, onSubmit }: OrderFormProps) => {
+  const dispatch = useDispatch()
+
   const {
     control,
     handleSubmit,
@@ -27,7 +36,10 @@ export const OrderForm = () => {
     resolver: yupResolver(validationSchema),
   })
 
-  const saveOrder = (order: EditableOrder) => {}
+  const saveOrder = (order: EditableOrder) => {
+    dispatch(addOrder({ id: 0, ...order }))
+    onSubmit()
+  }
 
   return (
     <View style={styles.view}>
@@ -76,7 +88,7 @@ export const OrderForm = () => {
         disabled={!isValid}
         onPress={handleSubmit(saveOrder)}
       >
-        Создать новый заказ
+        {mode === 'create' ? 'Создать новый заказ' : 'Сохранить изменения'}
       </Button>
     </View>
   )
