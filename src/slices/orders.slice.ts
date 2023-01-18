@@ -1,9 +1,15 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-export const ordersSlice = createSlice<OrdersSliceState, OrdersSlice>({
+export const ordersSlice = createSlice({
   name: 'orders',
   initialState: {
-    orders: [],
+    orders: Array<Order>(),
   },
-  reducers: {},
+  reducers: {
+    addOrder: (state, { payload }: PayloadAction<Order>) => {
+      state.orders.push(payload)
+    },
+  },
 })
+
+export const { addOrder } = ordersSlice.actions
