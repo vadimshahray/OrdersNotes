@@ -1,4 +1,4 @@
-import { ordersSlice } from './slices'
+import { ordersSlice } from '@slices'
 import { configureStore } from '@reduxjs/toolkit'
 
 export const store = configureStore({
