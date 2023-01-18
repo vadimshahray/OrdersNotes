@@ -36,16 +36,16 @@ export const OrderForm = () => {
           name='name'
           control={control}
           render={({
-            field: { onChange, ...fieldProps },
+            field: { value, onChange },
             fieldState: { error, invalid },
           }) => {
             return (
               <ValidatedTextInput
                 label='Название'
+                value={value}
                 error={invalid}
                 errorText={error?.message}
                 onChangeText={onChange}
-                {...fieldProps}
               />
             )
           }}
@@ -55,16 +55,16 @@ export const OrderForm = () => {
           name='customer'
           control={control}
           render={({
-            field: { onChange, ...fieldProps },
+            field: { value, onChange },
             fieldState: { error, invalid },
           }) => {
             return (
               <ValidatedTextInput
                 label='Покупатель'
+                value={value}
                 error={invalid}
                 errorText={error?.message}
                 onChangeText={onChange}
-                {...fieldProps}
               />
             )
           }}
