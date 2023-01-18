@@ -18,8 +18,8 @@ export const OrdersList = () => {
 
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Order>) => (
-      <ListItemWrapper>
-        <OrderItem order={item} onPress={navigateToOrderDesigner} />
+      <ListItemWrapper onPress={navigateToOrderDesigner}>
+        <OrderItem order={item} />
       </ListItemWrapper>
     ),
     [navigateToOrderDesigner],
