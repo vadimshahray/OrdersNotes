@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react'
+import { makeThemeStyles } from '@styles'
+import { StyleProp, ViewStyle } from 'react-native'
 import { TouchableRipple } from 'react-native-paper'
-import { StyleProp, StyleSheet, ViewStyle } from 'react-native'
 
 export type ListItemWrapperProps = {
   onPress: () => void
@@ -12,6 +13,8 @@ export const ListItemWrapper = ({
   children,
   style,
 }: ListItemWrapperProps) => {
+  const styles = useStyles()
+
   return (
     <TouchableRipple style={[styles.view, style]} onPress={onPress}>
       {children}
@@ -19,9 +22,14 @@ export const ListItemWrapper = ({
   )
 }
 
-const styles = StyleSheet.create({
+const useStyles = makeThemeStyles((theme) => ({
   view: {
     marginVertical: 4,
     marginHorizontal: 16,
+
+    paddingVertical: 6,
+    paddingHorizontal: 10,
+
+    borderRadius: theme.roundness,
   },
-})
+}))
