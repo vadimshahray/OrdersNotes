@@ -1,0 +1,3 @@
+type OrdersSliceState = {
+  orders: Order[]
+}
