@@ -9,7 +9,7 @@ export const ordersSlice = createSlice<
   initialState: {
     orders: {
       data: [],
-      isLoading: false,
+      isLoading: true,
     },
   },
   reducers: {},
