@@ -1,14 +1,13 @@
+import React from 'react'
 import { List } from '@components'
 import { useCallback } from 'react'
-import { useNavigation } from '@hooks'
 import { OrderItem } from './OrderItem'
-import { useSelector } from 'react-redux'
-import { selectOrders } from '@selectors'
 import { makeThemeStyles } from '@styles'
+import { useNavigation, useOrders } from '@hooks'
 import { ListRenderItemInfo } from '@shopify/flash-list'
 
 export const OrdersList = () => {
-  const orders = useSelector(selectOrders)
+  const { data } = useOrders()
 
   const { navigate } = useNavigation()
 
@@ -18,14 +17,14 @@ export const OrdersList = () => {
 
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Order>) => <OrderItem order={item} />,
-    [navigateToOrderDesigner],
+    [],
   )
 
   const styles = useStyles()
 
   return (
     <List
-      data={orders}
+      data={data}
       renderItem={renderItem}
       onItemPress={navigateToOrderDesigner}
       itemStyle={styles.item}
