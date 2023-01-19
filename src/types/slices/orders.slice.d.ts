@@ -1,3 +1,6 @@
 type OrdersSliceState = {
-  orders: Order[]
+  orders: {
+    data: Order[]
+    isLoading: boolean
+  }
 }

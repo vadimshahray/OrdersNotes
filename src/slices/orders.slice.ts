@@ -1,15 +1,30 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit'
+import { addOrder, getAllOrders } from '@slices'
+import { createSlice, SliceCaseReducers } from '@reduxjs/toolkit'
 
-export const ordersSlice = createSlice({
+export const ordersSlice = createSlice<
+  OrdersSliceState,
+  SliceCaseReducers<OrdersSliceState>
+>({
   name: 'orders',
   initialState: {
-    orders: Array<Order>(),
-  },
-  reducers: {
-    addOrder: (state, { payload }: PayloadAction<Order>) => {
-      state.orders.push(payload)
+    orders: {
+      data: [],
+      isLoading: false,
     },
   },
-})
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(getAllOrders.pending, (state) => {
+        state.orders.isLoading = true
+      })
+      .addCase(getAllOrders.fulfilled, (state, { payload }) => {
+        state.orders.isLoading = false
+        state.orders.data = payload ?? []
+      })
 
-export const { addOrder } = ordersSlice.actions
+      .addCase(addOrder.fulfilled, (state, { payload }) => {
+        state.orders.data = [payload, ...state.orders.data]
+      })
+  },
+})
