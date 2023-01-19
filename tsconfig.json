@@ -27,6 +27,7 @@
       "@slices": ["src/slices"],
       "@storage": ["src/storage"],
       "@styles": ["src/styles"],
+      "@utils": ["src/utils"],
     },
   },
   "exclude": [

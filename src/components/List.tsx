@@ -1,5 +1,5 @@
-import { useCallback } from 'react'
 import { StyleSheet } from 'react-native'
+import React, { useCallback } from 'react'
 import {
   ListItemWrapper,
   ListEmptyContent,
@@ -12,6 +12,8 @@ import {
 } from '@shopify/flash-list'
 
 export type ListProps<Item> = {
+  isLoading: boolean
+  Skeleton: React.ComponentType
   onItemPress: (item: Item) => void
   itemStyle?: ListItemWrapperProps['style']
 } & FlashListProps<Item>
@@ -19,6 +21,8 @@ export type ListProps<Item> = {
 export function List<Item>({
   renderItem,
   onItemPress,
+  isLoading,
+  Skeleton,
   itemStyle,
   ...props
 }: ListProps<Item>) {
@@ -34,10 +38,12 @@ export function List<Item>({
         </ListItemWrapper>
       )
     },
-    [renderItem],
+    [renderItem, itemStyle, onItemPress],
   )
 
-  return props.data?.length ? (
+  return isLoading ? (
+    <Skeleton />
+  ) : props.data?.length ? (
     <FlashList
       contentContainerStyle={styles.listContentContainer}
       {...props}

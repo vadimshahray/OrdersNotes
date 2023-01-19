@@ -5,10 +5,10 @@ import { OrderItem } from './OrderItem'
 import { makeThemeStyles } from '@styles'
 import { useNavigation, useOrders } from '@hooks'
 import { ListRenderItemInfo } from '@shopify/flash-list'
+import { OrdersListSkeleton } from './OrdersListSkeleton'
 
 export const OrdersList = () => {
-  const { data } = useOrders()
-
+  const { data, isLoading } = useOrders()
   const { navigate } = useNavigation()
 
   const navigateToOrderDesigner = useCallback(() => {
@@ -25,8 +25,10 @@ export const OrdersList = () => {
   return (
     <List
       data={data}
+      isLoading={isLoading}
       renderItem={renderItem}
       onItemPress={navigateToOrderDesigner}
+      Skeleton={OrdersListSkeleton}
       itemStyle={styles.item}
     />
   )
