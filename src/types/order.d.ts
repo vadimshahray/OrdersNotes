@@ -5,4 +5,5 @@ type EditableOrder = {
 
 type Order = {
   id: number
+  creationDate: number
 } & EditableOrder
