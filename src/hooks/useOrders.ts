@@ -17,7 +17,7 @@ export const useOrders = () => {
   }, [isLoading, dispatch])
 
   return {
-    isLoading: true,
+    isLoading,
     data: orders,
   }
 }
