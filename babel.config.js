@@ -12,6 +12,7 @@ module.exports = {
           "@screens": "./src/screens",
           "@selectors": "./src/selectors",
           "@slices": "./src/slices",
+          "@storage": "./src/storage",
           "@styles": "./src/styles",
         }
       }
