@@ -2,7 +2,7 @@ import { useNavigation } from '@hooks'
 import { SettingsScreenAction } from '@components'
 import React, { useEffect, useCallback } from 'react'
 
-export const useMainScreenHeaderRight = () => {
+export const useOrdersListScreenHeaderRight = () => {
   const { navigate, setOptions } = useNavigation()
 
   const navigateToSettings = useCallback(() => {

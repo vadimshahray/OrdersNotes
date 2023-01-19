@@ -1,5 +1,5 @@
 type RootStackParamList = {
-  MainScreen: undefined
+  OrdersListScreen: undefined
   SettingsScreen: undefined
   OrderDesignerScreen: {
     mode: 'create' | 'modify'

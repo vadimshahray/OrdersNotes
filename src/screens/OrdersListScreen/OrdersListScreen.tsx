@@ -2,11 +2,11 @@ import React from 'react'
 import { OrdersList } from './OrdersList'
 import { ScreenContent } from '@components'
 import { AddOrderButton } from './AddOrderButton'
-import { useMainScreenHeaderRight, useScreenTitle } from '@hooks'
+import { useOrdersListScreenHeaderRight, useScreenTitle } from '@hooks'
 
-export const MainScreen = () => {
-  useScreenTitle('Главная')
-  useMainScreenHeaderRight()
+export const OrdersListScreen = () => {
+  useScreenTitle('Список заказов')
+  useOrdersListScreenHeaderRight()
 
   return (
     <ScreenContent noPadding>
