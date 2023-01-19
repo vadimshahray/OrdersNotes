@@ -1,3 +1,4 @@
+import React from 'react'
 import { HelperText, TextInput, TextInputProps } from 'react-native-paper'
 
 export type ValidatedTextInputProps = {

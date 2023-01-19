@@ -1,3 +1,4 @@
+import React from 'react'
 import { useTheme } from 'react-native-paper'
 import { StatusBar as RNStatusBar } from 'react-native'
 

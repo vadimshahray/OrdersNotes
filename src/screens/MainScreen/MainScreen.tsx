@@ -1,9 +1,8 @@
 import React from 'react'
-import { Text } from 'react-native-paper'
+import { OrdersList } from './OrdersList'
 import { ScreenContent } from '@components'
 import { AddOrderButton } from './AddOrderButton'
 import { useMainScreenHeaderRight, useScreenTitle } from '@hooks'
-import { OrdersList } from './OrdersList'
 
 export const MainScreen = () => {
   useScreenTitle('Главная')
