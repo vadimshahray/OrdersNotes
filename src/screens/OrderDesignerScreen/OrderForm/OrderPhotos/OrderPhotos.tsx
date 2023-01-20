@@ -1,3 +1,4 @@
+import { View } from 'react-native'
 import { makeThemeStyles } from '@styles'
 import { Button } from 'react-native-paper'
 import { pickPhotosFromGallery } from '@utils'
@@ -23,6 +24,10 @@ export const OrderPhotos = ({
     }
   }
 
+  const deletePhotos = () => {
+    setPhotos([])
+  }
+
   useEffect(() => {
     onPhotosChange(photos)
   }, [photos, onPhotosChange])
@@ -33,21 +38,32 @@ export const OrderPhotos = ({
     <>
       <OrdersPhotosList photos={photos} />
 
-      <Button
-        icon='file-image-plus-outline'
-        style={styles.addButton}
-        onPress={pickPhotos}
-      >
-        Добавить фото
-      </Button>
+      <View style={styles.view}>
+        {photos.length !== 0 && (
+          <Button icon='delete-outline' onPress={deletePhotos}>
+            Удалить
+          </Button>
+        )}
+
+        <Button
+          icon='file-image-plus-outline'
+          style={styles.addButton}
+          onPress={pickPhotos}
+        >
+          Добавить фото
+        </Button>
+      </View>
     </>
   )
 }
 
 const useStyles = makeThemeStyles((theme) => ({
-  addButton: {
+  view: {
     alignSelf: 'flex-end',
 
+    flexDirection: 'row',
+  },
+  addButton: {
     color: theme.colors.onSecondaryContainer,
     backgroundColor: theme.colors.primaryContainer,
   },
