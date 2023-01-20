@@ -1,6 +1,6 @@
 import { selectOrders } from '@selectors'
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { getStorageItem, setStorageItem } from '@storage'
+import { getStorageItem, removeStorageItem, setStorageItem } from '@storage'
 
 export const getAllOrders = createAsyncThunk<IStorageItems['@orders']>(
   'orders/getAll',
@@ -58,3 +58,10 @@ export const deleteOrder = createAsyncThunk<
 
   return i
 })
+
+export const deleteAllOrders = createAsyncThunk(
+  'orders/deleteAll',
+  async () => {
+    await removeStorageItem('@orders')
+  },
+)
