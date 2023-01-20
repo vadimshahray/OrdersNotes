@@ -1,8 +1,8 @@
 import React from 'react'
 import * as Yup from 'yup'
-import { addOrder } from '@slices'
 import { Button } from 'react-native-paper'
 import { useDispatch, useRoute } from '@hooks'
+import { addOrder, updateOrder } from '@slices'
 import { StyleSheet, View } from 'react-native'
 import { ValidatedTextInput } from '@components'
 import { useForm, Controller } from 'react-hook-form'
@@ -40,7 +40,10 @@ export const OrderForm = ({ onSubmit }: OrderFormProps) => {
   })
 
   const saveOrder = (order: EditableOrder) => {
-    dispatch(addOrder(order))
+    mode === 'modify' && initOrder
+      ? dispatch(updateOrder({ ...initOrder, ...order }))
+      : dispatch(addOrder(order))
+
     onSubmit()
   }
 

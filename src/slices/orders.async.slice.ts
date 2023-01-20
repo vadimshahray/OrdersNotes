@@ -25,3 +25,21 @@ export const addOrder = createAsyncThunk<
   await setStorageItem('@orders', [newOrder, ...orders])
   return newOrder
 })
+
+export const updateOrder = createAsyncThunk<
+  { index: number; order: Order },
+  Order,
+  { state: RootState }
+>('orders/updateOne', async (order, { getState }) => {
+  const orders = [...selectOrders(getState())]
+
+  const i = orders.findIndex((o) => o.id === order.id)
+  orders.splice(i, 1, order)
+
+  await setStorageItem('@orders', orders)
+
+  return {
+    index: i,
+    order,
+  }
+})
