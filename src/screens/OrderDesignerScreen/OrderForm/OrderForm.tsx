@@ -1,8 +1,8 @@
 import React from 'react'
 import * as Yup from 'yup'
 import { addOrder } from '@slices'
-import { useDispatch } from '@hooks'
 import { Button } from 'react-native-paper'
+import { useDispatch, useRoute } from '@hooks'
 import { StyleSheet, View } from 'react-native'
 import { ValidatedTextInput } from '@components'
 import { useForm, Controller } from 'react-hook-form'
@@ -16,12 +16,15 @@ const validationSchema = Yup.object<Record<keyof EditableOrder, Yup.AnySchema>>(
 )
 
 export type OrderFormProps = {
-  mode: 'create' | 'modify'
   onSubmit: () => void
 }
 
-export const OrderForm = ({ mode, onSubmit }: OrderFormProps) => {
+export const OrderForm = ({ onSubmit }: OrderFormProps) => {
   const dispatch = useDispatch()
+
+  const {
+    params: { mode, initOrder },
+  } = useRoute<'OrderDesignerScreen'>()
 
   const {
     control,
@@ -30,8 +33,8 @@ export const OrderForm = ({ mode, onSubmit }: OrderFormProps) => {
   } = useForm<EditableOrder>({
     mode: 'onChange',
     defaultValues: {
-      name: '',
-      notes: '',
+      name: initOrder?.name ?? '',
+      notes: initOrder?.notes ?? '',
     },
     resolver: yupResolver(validationSchema),
   })

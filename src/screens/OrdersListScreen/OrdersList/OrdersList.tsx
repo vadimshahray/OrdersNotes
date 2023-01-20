@@ -11,9 +11,12 @@ export const OrdersList = () => {
   const { data, isLoading } = useOrders()
   const { navigate } = useNavigation()
 
-  const navigateToOrderDesigner = useCallback(() => {
-    navigate('OrderDesignerScreen', { mode: 'modify' })
-  }, [navigate])
+  const navigateToOrderDesigner = useCallback(
+    (order: Order) => {
+      navigate('OrderDesignerScreen', { mode: 'modify', initOrder: order })
+    },
+    [navigate],
+  )
 
   const renderItem = useCallback(
     ({ item }: ListRenderItemInfo<Order>) => <OrderItem order={item} />,

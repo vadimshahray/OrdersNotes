@@ -17,7 +17,7 @@ export const OrderDesignerScreen = ({
 
   return (
     <ScreenContent>
-      <OrderForm mode={mode} onSubmit={handleSubmit} />
+      <OrderForm onSubmit={handleSubmit} />
     </ScreenContent>
   )
 }
