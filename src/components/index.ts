@@ -1,6 +1,5 @@
 export * from './List'
 export * from './AppBar'
-export * from './StatusBar'
 export * from './ScreenContent'
 export * from './ListItemWrapper'
 export * from './ListEmptyContent'
