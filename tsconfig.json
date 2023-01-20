@@ -4,9 +4,7 @@
     "target": "esnext",
     "module": "commonjs",
     "types": ["react-native"],
-    "lib": [
-      "es2019"
-    ],
+    "lib": ["es2019"],
     "noEmit": true,
     "strict": true,
     "allowJs": true,
@@ -20,6 +18,7 @@
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
+      "@assets": ["src/assets"],
       "@components": ["src/components"],
       "@hooks": ["src/hooks"],
       "@screens": ["src/screens"],
@@ -27,12 +26,8 @@
       "@slices": ["src/slices"],
       "@storage": ["src/storage"],
       "@styles": ["src/styles"],
-      "@utils": ["src/utils"],
-    },
+      "@utils": ["src/utils"]
+    }
   },
-  "exclude": [
-    "node_modules",
-    "babel.config.js",
-    "metro.config.js",
-  ]
+  "exclude": ["node_modules", "babel.config.js", "metro.config.js"]
 }

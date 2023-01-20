@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react'
 import { makeThemeStyles } from '@styles'
 import { Button } from 'react-native-paper'
 import { pickPhotosFromGallery } from '@utils'
+import React, { useEffect, useState } from 'react'
 import { OrdersPhotosList } from './OrderPhotosList'
 
 export type OrderPhotosProps = {

@@ -1,9 +1,10 @@
 import React from 'react'
-import { List } from '@components'
 import { useCallback } from 'react'
 import { OrderItem } from './OrderItem'
 import { makeThemeStyles } from '@styles'
+import { EmptyContent, List } from '@components'
 import { useNavigation, useOrders } from '@hooks'
+import EmptyImage from '@assets/empty_orders_list.svg'
 import { ListRenderItemInfo } from '@shopify/flash-list'
 import { OrdersListSkeleton } from './OrdersListSkeleton'
 
@@ -33,6 +34,7 @@ export const OrdersList = () => {
       onItemPress={navigateToOrderDesigner}
       Skeleton={OrdersListSkeleton}
       itemStyle={styles.item}
+      emptyContent={<EmptyContent text='Заказов нет' Image={EmptyImage} />}
     />
   )
 }
