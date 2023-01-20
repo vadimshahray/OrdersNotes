@@ -1,7 +1,7 @@
 import React from 'react'
 import { store } from './store'
+import { AppBar } from '@components'
 import { DefaultTheme } from '@styles'
-import { AppBar, StatusBar } from '@components'
 import { Provider as ReduxProvider } from 'react-redux'
 import { NavigationContainer } from '@react-navigation/native'
 import { Provider as PaperProvider } from 'react-native-paper'
@@ -16,13 +16,13 @@ export default () => {
     <ReduxProvider store={store}>
       <SafeAreaProvider>
         <PaperProvider theme={DefaultTheme}>
-          <StatusBar />
-
           <NavigationContainer theme={DefaultTheme}>
             <Navigator
               initialRouteName='OrdersListScreen'
               screenOptions={{
                 header: AppBar,
+                statusBarStyle: 'dark',
+                statusBarColor: DefaultTheme.colors.background,
               }}
             >
               <Screen name='OrdersListScreen' component={OrdersListScreen} />
