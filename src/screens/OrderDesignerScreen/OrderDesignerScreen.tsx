@@ -1,7 +1,7 @@
 import React from 'react'
 import { OrderForm } from './OrderForm'
-import { useScreenTitle } from '@hooks'
 import { ScreenContent } from '@components'
+import { useOrderDesignerHeaderRight, useScreenTitle } from '@hooks'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 export const OrderDesignerScreen = ({
@@ -11,13 +11,15 @@ export const OrderDesignerScreen = ({
   const mode = route.params.mode
   useScreenTitle(mode === 'create' ? 'Новый заказ' : 'Редактировать заказ')
 
-  const handleSubmit = () => {
+  const navigateBack = () => {
     navigation.goBack()
   }
 
+  useOrderDesignerHeaderRight(navigateBack)
+
   return (
     <ScreenContent>
-      <OrderForm onSubmit={handleSubmit} />
+      <OrderForm onSubmit={navigateBack} />
     </ScreenContent>
   )
 }

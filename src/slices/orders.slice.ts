@@ -1,4 +1,4 @@
-import { addOrder, getAllOrders, updateOrder } from '@slices'
+import { addOrder, deleteOrder, getAllOrders, updateOrder } from '@slices'
 import { createSlice, PayloadAction, SliceCaseReducers } from '@reduxjs/toolkit'
 
 export const ordersSlice = createSlice<
@@ -34,6 +34,11 @@ export const ordersSlice = createSlice<
 
       .addCase(updateOrder.fulfilled, (state, { payload }) => {
         state.orders.data[payload.index] = payload.order
+      })
+
+      .addCase(deleteOrder.fulfilled, (state, { payload }) => {
+        console.log(payload)
+        state.orders.data.splice(payload, 1)
       })
   },
 })

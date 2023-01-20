@@ -43,3 +43,18 @@ export const updateOrder = createAsyncThunk<
     order,
   }
 })
+
+export const deleteOrder = createAsyncThunk<
+  number,
+  number,
+  { state: RootState }
+>('orders/deleteOne', async (orderId, { getState }) => {
+  const orders = [...selectOrders(getState())]
+
+  const i = orders.findIndex((o) => o.id === orderId)
+  orders.splice(i, 1)
+
+  await setStorageItem('@orders', orders)
+
+  return i
+})
