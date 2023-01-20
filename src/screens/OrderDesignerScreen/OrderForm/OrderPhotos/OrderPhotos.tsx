@@ -40,7 +40,7 @@ export const OrderPhotos = ({
 
       <View style={styles.view}>
         {photos.length !== 0 && (
-          <Button icon='delete-outline' onPress={deletePhotos}>
+          <Button icon='file-image-remove-outline' onPress={deletePhotos}>
             Удалить
           </Button>
         )}
