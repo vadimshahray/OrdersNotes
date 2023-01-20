@@ -1,6 +1,8 @@
 type EditableOrder = {
   name: string
   notes?: string
+
+  photos: string[]
 }
 
 type Order = {
