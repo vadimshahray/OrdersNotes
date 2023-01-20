@@ -40,7 +40,7 @@ export const OrderForm = ({ onSubmit }: OrderFormProps) => {
   })
 
   const saveOrder = (order: EditableOrder) => {
-    dispatch(addOrder({ id: 0, ...order }))
+    dispatch(addOrder(order))
     onSubmit()
   }
 
