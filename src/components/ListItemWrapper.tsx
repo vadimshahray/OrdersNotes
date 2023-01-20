@@ -4,6 +4,7 @@ import { StyleProp, ViewStyle } from 'react-native'
 import { TouchableRipple } from 'react-native-paper'
 
 export const LIST_ITEM_WRAPPER_H_PADDING = 4
+export const LIST_ITEM_WRAPPER_V_OFFSET_V = 4 + 6
 
 export type ListItemWrapperProps = {
   onPress: () => void
