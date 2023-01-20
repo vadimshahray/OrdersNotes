@@ -7,6 +7,8 @@ import {
   ListRenderItemInfo,
 } from '@shopify/flash-list'
 
+export const LIST_PADDING_V = 3.5
+
 export type ListProps<Item> = {
   isLoading?: boolean
   emptyContent: JSX.Element
@@ -59,6 +61,6 @@ export function List<Item>({
 
 const styles = StyleSheet.create({
   listContentContainer: {
-    paddingVertical: 3.5,
+    paddingVertical: LIST_PADDING_V,
   },
 })
