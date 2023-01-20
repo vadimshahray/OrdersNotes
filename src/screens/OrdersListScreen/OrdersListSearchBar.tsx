@@ -2,11 +2,12 @@ import React from 'react'
 import { setSearch } from '@slices'
 import { useDispatch } from '@hooks'
 import { useSelector } from 'react-redux'
-import { Searchbar } from 'react-native-paper'
 import { selectOrdersSearch } from '@selectors'
+import { Searchbar, useTheme } from 'react-native-paper'
 
 export const OrdersListSearchBar = () => {
   const dispatch = useDispatch()
+  const { colors } = useTheme()
 
   const search = useSelector(selectOrdersSearch)
 
@@ -17,7 +18,8 @@ export const OrdersListSearchBar = () => {
   return (
     <Searchbar
       value={search}
-      placeholder='Название/примечания'
+      placeholderTextColor={colors.secondary}
+      placeholder='Поиск'
       onChangeText={handleTextChange}
     />
   )
