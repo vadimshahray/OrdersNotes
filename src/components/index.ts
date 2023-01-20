@@ -1,4 +1,5 @@
 export * from './List'
+export * from './Image'
 export * from './AppBar'
 export * from './EmptyContent'
 export * from './ScreenContent'

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image } from 'react-native'
+import { Image } from '@components'
 import { makeThemeStyles } from '@styles'
 
 export const ORDER_PHOTO_HEIGHT = 180
@@ -12,13 +12,7 @@ export type OrderPhotoItemProps = {
 export const OrderPhotoItem = ({ photoUri }: OrderPhotoItemProps) => {
   const styles = useStyles()
 
-  return (
-    <Image
-      source={{ uri: photoUri }}
-      style={styles.photo}
-      resizeMode='center'
-    />
-  )
+  return <Image source={{ uri: photoUri }} style={styles.photo} />
 }
 
 const useStyles = makeThemeStyles((theme) => ({
