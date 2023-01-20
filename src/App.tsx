@@ -5,11 +5,12 @@ import { DefaultTheme } from '@styles'
 import { Provider as ReduxProvider } from 'react-redux'
 import { NavigationContainer } from '@react-navigation/native'
 import { Provider as PaperProvider } from 'react-native-paper'
-import { OrdersListScreen, OrderDesignerScreen } from '@screens'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import { OrdersListScreen, OrderDesignerScreen, ModalScreen } from '@screens'
 
-const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>()
+const { Navigator, Screen, Group } =
+  createNativeStackNavigator<RootStackParamList>()
 
 export default () => {
   return (
@@ -25,12 +26,23 @@ export default () => {
                 statusBarColor: DefaultTheme.colors.background,
               }}
             >
-              <Screen name='OrdersListScreen' component={OrdersListScreen} />
+              <Group>
+                <Screen name='OrdersListScreen' component={OrdersListScreen} />
 
-              <Screen
-                name='OrderDesignerScreen'
-                component={OrderDesignerScreen}
-              />
+                <Screen
+                  name='OrderDesignerScreen'
+                  component={OrderDesignerScreen}
+                />
+              </Group>
+
+              <Group
+                screenOptions={{
+                  headerShown: false,
+                  presentation: 'transparentModal',
+                }}
+              >
+                <Screen name='ModalScreen' component={ModalScreen} />
+              </Group>
             </Navigator>
           </NavigationContainer>
         </PaperProvider>

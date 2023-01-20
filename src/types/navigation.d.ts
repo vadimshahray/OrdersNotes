@@ -1,8 +1,18 @@
+type
+
 type RootStackParamList = {
   OrdersListScreen: undefined
   OrderDesignerScreen: {
     mode: 'create' | 'modify'
     initOrder?: Order
+  }
+
+  ModalScreen: {
+    title: string
+    text?: string
+
+    okAction?: DialogAction
+    cancelAction?: DialogAction
   }
 }
 
