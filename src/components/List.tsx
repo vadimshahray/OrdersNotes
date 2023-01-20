@@ -1,11 +1,16 @@
 import { StyleSheet } from 'react-native'
 import React, { useCallback } from 'react'
-import { ListItemWrapper, ListItemWrapperProps } from '@components'
 import {
   FlashList,
   FlashListProps,
   ListRenderItemInfo,
 } from '@shopify/flash-list'
+import {
+  ListItemWrapper,
+  ListItemWrapperProps,
+  LIST_ITEM_WRAPPER_H_OFFSET,
+  LIST_ITEM_WRAPPER_V_OFFSET_V,
+} from '@components'
 
 export const LIST_PADDING_V = 3.5
 
@@ -15,7 +20,8 @@ export type ListProps<Item> = {
   Skeleton?: React.ComponentType
   onItemPress: (item: Item) => void
   itemStyle?: ListItemWrapperProps['style']
-} & Omit<FlashListProps<Item>, 'ListEmptyComponent'>
+  itemSize: number
+} & Omit<FlashListProps<Item>, 'ListEmptyComponent' | 'estimatedItemSize'>
 
 export function List<Item>({
   renderItem,
@@ -24,6 +30,7 @@ export function List<Item>({
   Skeleton,
   itemStyle,
   emptyContent,
+  itemSize,
   ...props
 }: ListProps<Item>) {
   const renderWrappedItem = useCallback(
@@ -45,6 +52,12 @@ export function List<Item>({
     [renderItem, itemStyle, onItemPress, props.horizontal],
   )
 
+  const estimatedItemSize =
+    itemSize +
+    (props.horizontal
+      ? 2 * LIST_ITEM_WRAPPER_H_OFFSET
+      : 2 * LIST_ITEM_WRAPPER_V_OFFSET_V)
+
   return isLoading && Skeleton ? (
     <Skeleton />
   ) : props.data?.length ? (
@@ -53,6 +66,7 @@ export function List<Item>({
       contentContainerStyle={styles.listContentContainer}
       {...props}
       renderItem={renderWrappedItem}
+      estimatedItemSize={estimatedItemSize}
     />
   ) : (
     emptyContent

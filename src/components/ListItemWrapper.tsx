@@ -3,7 +3,7 @@ import { makeThemeStyles } from '@styles'
 import { StyleProp, ViewStyle } from 'react-native'
 import { TouchableRipple } from 'react-native-paper'
 
-export const LIST_ITEM_WRAPPER_H_PADDING = 4
+export const LIST_ITEM_WRAPPER_H_OFFSET = 4
 export const LIST_ITEM_WRAPPER_V_OFFSET_V = 4 + 6
 
 export type ListItemWrapperProps = {
@@ -41,7 +41,7 @@ const useStyles = makeThemeStyles((theme) => ({
     borderRadius: theme.roundness,
   },
   viewHorizontal: {
-    padding: LIST_ITEM_WRAPPER_H_PADDING,
+    padding: LIST_ITEM_WRAPPER_H_OFFSET,
 
     borderRadius: theme.roundness,
   },

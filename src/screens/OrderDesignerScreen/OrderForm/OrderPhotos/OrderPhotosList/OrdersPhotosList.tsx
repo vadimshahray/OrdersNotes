@@ -4,11 +4,15 @@ import {
   List,
   EmptyContent,
   LIST_PADDING_V,
-  LIST_ITEM_WRAPPER_H_PADDING,
+  LIST_ITEM_WRAPPER_H_OFFSET,
 } from '@components'
 import EmptyPhotos from '@assets/empty_photos_list.svg'
 import { ListRenderItemInfo } from '@shopify/flash-list'
-import { OrderPhotoItem, ORDER_PHOTO_HEIGHT } from './OrderPhotoItem'
+import {
+  OrderPhotoItem,
+  ORDER_PHOTO_WIDTH,
+  ORDER_PHOTO_HEIGHT,
+} from './OrderPhotoItem'
 
 export type OrdersPhotosListProps = {
   photos: Order['photos']
@@ -24,6 +28,7 @@ export const OrdersPhotosList = ({ photos }: OrdersPhotosListProps) => {
       <List
         data={photos}
         renderItem={renderItem}
+        itemSize={ORDER_PHOTO_WIDTH}
         onItemPress={() => {}}
         horizontal
         emptyContent={
@@ -37,6 +42,6 @@ export const OrdersPhotosList = ({ photos }: OrdersPhotosListProps) => {
 const styles = StyleSheet.create({
   view: {
     height:
-      ORDER_PHOTO_HEIGHT + 2 * LIST_ITEM_WRAPPER_H_PADDING + 2 * LIST_PADDING_V,
+      ORDER_PHOTO_HEIGHT + 2 * LIST_ITEM_WRAPPER_H_OFFSET + 2 * LIST_PADDING_V,
   },
 })

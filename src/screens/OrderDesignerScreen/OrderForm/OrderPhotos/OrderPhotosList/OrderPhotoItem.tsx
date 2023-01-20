@@ -3,6 +3,7 @@ import { Image } from 'react-native'
 import { makeThemeStyles } from '@styles'
 
 export const ORDER_PHOTO_HEIGHT = 180
+export const ORDER_PHOTO_WIDTH = 135
 
 export type OrderPhotoItemProps = {
   photoUri: string
@@ -22,7 +23,7 @@ export const OrderPhotoItem = ({ photoUri }: OrderPhotoItemProps) => {
 
 const useStyles = makeThemeStyles((theme) => ({
   photo: {
-    width: (ORDER_PHOTO_HEIGHT * 3) / 4,
+    width: ORDER_PHOTO_WIDTH,
     height: ORDER_PHOTO_HEIGHT,
 
     borderRadius: theme.roundness,
