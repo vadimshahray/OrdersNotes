@@ -21,6 +21,7 @@
     "react-hook-form": "^7.42.1",
     "react-native": "0.71.0",
     "react-native-fast-image": "^8.6.3",
+    "react-native-fs": "^2.20.0",
     "react-native-image-picker": "^5.0.1",
     "react-native-linear-gradient": "^2.6.2",
     "react-native-paper": "^5.1.3",
