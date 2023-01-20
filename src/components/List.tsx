@@ -45,6 +45,7 @@ export function List<Item>({
     <Skeleton />
   ) : props.data?.length ? (
     <FlashList
+      keyboardDismissMode='interactive'
       contentContainerStyle={styles.listContentContainer}
       {...props}
       renderItem={renderWrappedItem}

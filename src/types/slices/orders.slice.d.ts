@@ -3,4 +3,6 @@ type OrdersSliceState = {
     data: Order[]
     isLoading: boolean
   }
+
+  search: string
 }

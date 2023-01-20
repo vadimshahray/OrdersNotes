@@ -1,5 +1,5 @@
 import { addOrder, getAllOrders } from '@slices'
-import { createSlice, SliceCaseReducers } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction, SliceCaseReducers } from '@reduxjs/toolkit'
 
 export const ordersSlice = createSlice<
   OrdersSliceState,
@@ -11,8 +11,13 @@ export const ordersSlice = createSlice<
       data: [],
       isLoading: true,
     },
+    search: '',
   },
-  reducers: {},
+  reducers: {
+    setSearch: (state, { payload }: PayloadAction<string>) => {
+      state.search = payload
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getAllOrders.pending, (state) => {
@@ -28,3 +33,5 @@ export const ordersSlice = createSlice<
       })
   },
 })
+
+export const { setSearch } = ordersSlice.actions
