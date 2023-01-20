@@ -31,12 +31,16 @@ export function List<Item>({
       }
 
       return (
-        <ListItemWrapper onPress={handlePress} style={itemStyle}>
+        <ListItemWrapper
+          onPress={handlePress}
+          style={itemStyle}
+          horizontal={props.horizontal ?? false}
+        >
           {renderItem?.(itemData)}
         </ListItemWrapper>
       )
     },
-    [renderItem, itemStyle, onItemPress],
+    [renderItem, itemStyle, onItemPress, props.horizontal],
   )
 
   return isLoading && Skeleton ? (
