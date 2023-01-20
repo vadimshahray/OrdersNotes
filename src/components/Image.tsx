@@ -5,7 +5,7 @@ export const Image = (props: FastImageProps) => {
   return (
     <FastImage
       {...props}
-      resizeMode='center'
+      resizeMode='cover'
       defaultSource={require('@assets/placeholder.png')}
     />
   )

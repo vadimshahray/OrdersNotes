@@ -2,8 +2,8 @@ import React from 'react'
 import { Image } from '@components'
 import { makeThemeStyles } from '@styles'
 
-export const ORDER_PHOTO_HEIGHT = 180
 export const ORDER_PHOTO_WIDTH = 135
+export const ORDER_PHOTO_HEIGHT = 180
 
 export type OrderPhotoItemProps = {
   photoUri: string
