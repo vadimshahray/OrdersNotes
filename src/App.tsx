@@ -7,7 +7,12 @@ import { NavigationContainer } from '@react-navigation/native'
 import { Provider as PaperProvider } from 'react-native-paper'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { OrdersListScreen, OrderDesignerScreen, ModalScreen } from '@screens'
+import {
+  ModalScreen,
+  OrdersListScreen,
+  OrderPhotoDesigner,
+  OrderDesignerScreen,
+} from '@screens'
 
 const { Navigator, Screen, Group } =
   createNativeStackNavigator<RootStackParamList>()
@@ -32,6 +37,11 @@ export default () => {
                 <Screen
                   name='OrderDesignerScreen'
                   component={OrderDesignerScreen}
+                />
+
+                <Screen
+                  name='OrderPhotoDesignerScreen'
+                  component={OrderPhotoDesigner}
                 />
               </Group>
 

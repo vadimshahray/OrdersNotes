@@ -24,6 +24,20 @@ export const OrderPhotos = ({
     }
   }
 
+  const updatePhoto = (i: number, newPhoto: string) => {
+    const newPhotos = [...photos]
+    newPhotos[i] = newPhoto
+
+    setPhotos(newPhotos)
+  }
+
+  const deletePhoto = (i: number) => {
+    const newPhotos = [...photos]
+    newPhotos.splice(i, 1)
+
+    setPhotos(newPhotos)
+  }
+
   const deletePhotos = () => {
     setPhotos([])
   }
@@ -36,7 +50,11 @@ export const OrderPhotos = ({
 
   return (
     <>
-      <OrdersPhotosList photos={photos} />
+      <OrdersPhotosList
+        photos={photos}
+        onPhotoUpdated={updatePhoto}
+        onPhotoDeleted={deletePhoto}
+      />
 
       <View style={styles.view}>
         {photos.length !== 0 && (

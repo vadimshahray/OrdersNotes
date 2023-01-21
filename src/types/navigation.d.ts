@@ -2,9 +2,17 @@ type
 
 type RootStackParamList = {
   OrdersListScreen: undefined
+
   OrderDesignerScreen: {
     mode: 'create' | 'modify'
     initOrder?: Order
+  }
+
+  OrderPhotoDesignerScreen: {
+    photo: string
+
+    onUpdate: (newPath: string) => void
+    onDelete: () => void
   }
 
   ModalScreen: {

@@ -13,12 +13,29 @@ import {
   ORDER_PHOTO_WIDTH,
   ORDER_PHOTO_HEIGHT,
 } from './OrderPhotoItem'
+import { useNavigation } from '@hooks'
 
 export type OrdersPhotosListProps = {
   photos: Order['photos']
+  onPhotoUpdated: (i: number, newPhoto: string) => void
+  onPhotoDeleted: (i: number) => void
 }
 
-export const OrdersPhotosList = ({ photos }: OrdersPhotosListProps) => {
+export const OrdersPhotosList = ({
+  photos,
+  onPhotoUpdated,
+  onPhotoDeleted,
+}: OrdersPhotosListProps) => {
+  const { navigate } = useNavigation()
+
+  const navigateToPhotoDesigner = (photo: string, index: number) => {
+    navigate('OrderPhotoDesignerScreen', {
+      photo,
+      onDelete: () => onPhotoDeleted(index),
+      onUpdate: (newPhoto) => onPhotoUpdated(index, newPhoto),
+    })
+  }
+
   const renderItem = useCallback(({ item }: ListRenderItemInfo<string>) => {
     return <OrderPhotoItem photoUri={item} />
   }, [])
@@ -29,7 +46,7 @@ export const OrdersPhotosList = ({ photos }: OrdersPhotosListProps) => {
         data={photos}
         renderItem={renderItem}
         itemSize={ORDER_PHOTO_WIDTH}
-        onItemPress={() => {}}
+        onItemPress={navigateToPhotoDesigner}
         horizontal
         emptyContent={
           <EmptyContent size={120} text='Фотографий нет' Image={EmptyPhotos} />
