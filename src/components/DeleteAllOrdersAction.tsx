@@ -21,5 +21,5 @@ export const DeleteAllOrdersAction = () => {
     })
   }
 
-  return <Appbar.Action icon='delete-outline' onPress={handlePress} />
+  return <Appbar.Action icon='delete-sweep-outline' onPress={handlePress} />
 }
