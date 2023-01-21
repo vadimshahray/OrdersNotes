@@ -18,7 +18,7 @@ export type ListProps<Item> = {
   isLoading?: boolean
   emptyContent: JSX.Element
   Skeleton?: React.ComponentType
-  onItemPress: (item: Item) => void
+  onItemPress: (item: Item, index: number) => void
   itemStyle?: ListItemWrapperProps['style']
   itemSize: number
 } & Omit<FlashListProps<Item>, 'ListEmptyComponent' | 'estimatedItemSize'>
@@ -36,7 +36,7 @@ export function List<Item>({
   const renderWrappedItem = useCallback(
     (itemData: ListRenderItemInfo<Item>) => {
       const handlePress = () => {
-        onItemPress(itemData.item)
+        onItemPress(itemData.item, itemData.index)
       }
 
       return (
